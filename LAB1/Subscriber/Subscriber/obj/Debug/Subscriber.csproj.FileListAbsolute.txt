@@ -1,0 +1,7 @@
+D:\UTM\Lucrari de laborator\PAD\Subscriber\Subscriber\bin\Debug\Subscriber.exe.config
+D:\UTM\Lucrari de laborator\PAD\Subscriber\Subscriber\bin\Debug\Subscriber.exe
+D:\UTM\Lucrari de laborator\PAD\Subscriber\Subscriber\bin\Debug\Subscriber.pdb
+D:\UTM\Lucrari de laborator\PAD\Subscriber\Subscriber\obj\Debug\Subscriber.csprojResolveAssemblyReference.cache
+D:\UTM\Lucrari de laborator\PAD\Subscriber\Subscriber\obj\Debug\Subscriber.csproj.CoreCompileInputs.cache
+D:\UTM\Lucrari de laborator\PAD\Subscriber\Subscriber\obj\Debug\Subscriber.exe
+D:\UTM\Lucrari de laborator\PAD\Subscriber\Subscriber\obj\Debug\Subscriber.pdb
