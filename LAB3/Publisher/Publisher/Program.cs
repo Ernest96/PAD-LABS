@@ -13,11 +13,9 @@ namespace Publisher
         static void Main(string[] args)
         {
             ushort forwardId;
-
             socket.Bind(9001);
             socket.Connect("127.0.0.1", 9000); // conectare la broker
             Console.WriteLine("Publisher");
-
             string text = "";
             while (true) 
             {
@@ -38,16 +36,6 @@ namespace Publisher
                     {
                         Console.WriteLine(e.Message);
                         continue;
-                    }
-
-                    Theme t = DbUtility.GetThemeFromDb(forwardId);
-                    if (t != null)
-                    {
-                        Console.WriteLine(t.ToString());
-                    }
-                    else
-                    {
-                        Console.WriteLine("Theme not found in DB");
                     }
 
                     Console.WriteLine("Please enter a message");

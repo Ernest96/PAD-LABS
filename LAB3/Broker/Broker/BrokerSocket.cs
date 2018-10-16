@@ -117,6 +117,12 @@ namespace Broker
                     }
                     else
                     {
+                        Theme t = DbUtility.GetThemeFromDb(data.themeId);
+                        if (t != null)
+                        {
+                            Console.WriteLine(t.ToString());
+                        }
+
                         foreach (var x in subscribers)
                         {
                             if (x.Key.Split('#')[0] == data.themeId.ToString())

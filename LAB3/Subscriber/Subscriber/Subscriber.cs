@@ -17,6 +17,8 @@ namespace Subscriber
         private string ip;
         private int port;
         public bool isConnected = false;
+        public bool resubscribe = false;
+        public byte[] subscribeMessage { get; set; }
 
         public SubscriberSocket()
         {
@@ -38,6 +40,7 @@ namespace Subscriber
         private void Reconnect()
         {
             this.isConnected = false;
+            resubscribe = true;
             subscriberSocket.Close();
             subscriberSocket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
             subscriberSocket.BeginConnect(new IPEndPoint(IPAddress.Parse(ip), port), ConnectCallback, null);
@@ -97,6 +100,10 @@ namespace Subscriber
                     Console.WriteLine("Connection estabilished");
                     buffer = new byte[BUFF_SIZE];
                     subscriberSocket.BeginReceive(buffer, 0, buffer.Length, SocketFlags.None, ReceiveCallback, null);
+                    if (resubscribe)
+                    {
+                        this.Send(subscribeMessage);
+                    }
                 }
                 catch (Exception e)
                 {

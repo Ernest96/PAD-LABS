@@ -41,6 +41,7 @@ namespace Publisher
             this.isConnected = false;
             publisherSocket.Close();
             publisherSocket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
+            this.Bind(9001);
             publisherSocket.BeginConnect(new IPEndPoint(IPAddress.Parse(ip), port), ConnectCallback, null);
         }
 

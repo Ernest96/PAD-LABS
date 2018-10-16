@@ -19,11 +19,7 @@ namespace Broker
 
             Console.WriteLine($"Packet received: Length: {packetLength + 2}  ");
             Console.WriteLine($"Theme id {themeId}");
-            Theme t = DbUtility.GetThemeFromDb(themeId);
-            if (t != null)
-            {
-                Console.WriteLine(t.ToString());
-            }
+            
 
             return (message, themeId);
         }

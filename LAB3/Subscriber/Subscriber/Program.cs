@@ -15,10 +15,7 @@ namespace Subscriber
         private static SubscriberSocket socket = new SubscriberSocket();
         static void Main(string[] args)
         {
-            ushort id;
-            ushort port;
-            string msg;
-
+            ushort id; ushort port; string msg;
             while (true)
             {
                 try
@@ -27,7 +24,6 @@ namespace Subscriber
                     port = Convert.ToUInt16(Console.ReadLine());
                     Console.Write("Enter thematic id: "); // id-ul la care sa transmita brokerul mesajele
                     id = Convert.ToUInt16(Console.ReadLine());
-
                     Console.Write("s - subscribe. another key - unsubscribe : ");
                     if (Console.ReadLine().ToLower() == "s")
                         msg = "subscribe";
@@ -35,23 +31,13 @@ namespace Subscriber
                         msg = "unsubscribe";
 
                     var message = Message.CreateMessage(msg, id);
-                    Theme t = DbUtility.GetThemeFromDb(id);
-                    if (t != null)
-                    {
-                        Console.WriteLine(t.ToString());
-                    }
-                    else
-                    {
-                        Console.WriteLine("Theme not found in DB");
-                    }
-
                     socket.Bind(port);
                     socket.Connect("127.0.0.1", 9000);
-
                     while (true)
                     {
                         if (socket.isConnected)
                         {
+                            socket.subscribeMessage = message;
                             socket.Send(message);
                             break;
                         }
